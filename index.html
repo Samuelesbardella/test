@@ -156,17 +156,27 @@
             margin-bottom: 30px !important;
         }
 
+        .small-note {
+            font-size: 0.85em;
+            color: #888;
+            font-weight: 400;
+            display: inline-block;
+        }
+
+        .or-text {
+            margin: 10px 0;
+            font-weight: 500;
+            color: #d4a373;
+        }
+
         /* STILE IMMAGINE CAPPUCCINO */
         .latte-img {
-            width: 200px; /* Dimensione fissa ideale per mobile */
+            width: 200px;
             height: auto;
             display: block;
             margin: 0 auto 20px auto;
-            /* Se la foto è rettangolare, questo la rende un po' più morbida */
             border-radius: 15px; 
-            /* Ombra per staccarla dallo sfondo */
             filter: drop-shadow(0 10px 15px rgba(139, 69, 19, 0.15));
-            /* Piccola animazione di galleggiamento */
             animation: floatIcon 6s infinite ease-in-out;
         }
 
@@ -218,15 +228,20 @@
             padding: 12px;
         }
 
-        button.selectable {
-            border: 2px solid transparent;
-            justify-content: flex-start;
+        /* Stile opzioni statiche (non cliccabili) */
+        .static-option {
+            background: #fff;
+            padding: 18px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            color: #555;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             text-align: left;
-        }
-        button.selectable.selected {
-            border-color: #d4a373;
-            background-color: #fff8f0;
-            color: #333;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.8;
         }
 
         /* --- IL GIOCO DEI PACCHI --- */
@@ -264,37 +279,42 @@
         .gift-content { font-size: 1.8rem; display: none; }
         .winning-ticket { font-size: 0.8rem; line-height: 1.2; color: #d4a373; font-weight: 600; }
 
-        /* --- SCENA BABBO NATALE (SILHOUETTE) --- */
+        /* --- SCENA BABBO NATALE (CON SFONDO LAPPONIA) --- */
         .santa-scene-wrapper {
             width: 100%;
-            height: 120px;
+            height: 180px; /* Un po' più alto per vedere la foto */
             position: relative;
             overflow: hidden; 
             margin-bottom: 10px;
+            border-radius: 15px;
+            /* Qui carichiamo l'immagine di sfondo */
+            background: url('lapponia.jpg') center center no-repeat;
+            background-size: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .moon {
+        /* Overlay leggero per far risaltare la slitta scura */
+        .santa-scene-wrapper::after {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: 40px;
-            width: 50px;
-            height: 50px;
-            background: #fff5d7;
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(255, 245, 215, 0.5);
-            opacity: 0.9;
-            z-index: 1;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Leggera patina chiara */
+            pointer-events: none;
         }
 
         .sleigh-container {
             position: absolute;
-            top: 30px;
+            top: 40px; /* Regola l'altezza del volo */
             right: -180px; 
             z-index: 2;
             display: flex;
             align-items: flex-end;
-            filter: brightness(0) opacity(0.8);
-            transform: scale(0.8); 
+            /* Ombra Cinese molto scura per contrastare con la foto */
+            filter: brightness(0) opacity(0.9); 
+            transform: scale(0.7); 
         }
 
         .silhouette-part {
@@ -307,15 +327,15 @@
         .sleigh { transform: rotate(-5deg); margin-bottom: -5px; }
 
         .fly-active {
-            animation: flyAcross 3.5s linear forwards;
+            animation: flyAcross 4s linear forwards;
         }
 
         @keyframes flyAcross {
-            0% { right: -180px; transform: scale(0.8) translateY(0); }
-            25% { transform: scale(0.8) translateY(-20px) rotate(-2deg); }
-            50% { transform: scale(0.8) translateY(0) rotate(0deg); }
-            75% { transform: scale(0.8) translateY(15px) rotate(2deg); }
-            100% { right: 120%; transform: scale(0.8) translateY(-10px); } 
+            0% { right: -180px; transform: scale(0.7) translateY(0); }
+            25% { transform: scale(0.7) translateY(-20px) rotate(-2deg); }
+            50% { transform: scale(0.7) translateY(0) rotate(0deg); }
+            75% { transform: scale(0.7) translateY(15px) rotate(2deg); }
+            100% { right: 120%; transform: scale(0.7) translateY(-10px); } 
         }
 
         .joke-text {
@@ -323,7 +343,7 @@
             font-size: 0.9rem;
             color: #888;
             font-style: italic;
-            margin-top: -10px;
+            margin-top: 5px;
             margin-bottom: 20px;
             transition: opacity 1s ease;
         }
@@ -362,7 +382,7 @@
         <div id="step-1" class="slide active">
             <h1 class="anim-el">Ciao, come stai? 👋</h1>
             <p class="anim-el">Buon Natale in ritardo.<br>
-            Spero che tu non abbia vinto un astuccio dell'<span class="highlight">Eastpak</span> alla tombola natalizia...</p>
+            Spero che tu non abbia vinto un astuccio dell'<span class="highlight">Eastpak</span> alla tombola natalizia.</p>
             <p class="anim-el">Ci tenevo a chiederti una cosa...</p>
             
             <div class="btn-container anim-el">
@@ -374,7 +394,7 @@
         <!-- SLIDE 2: TECNICO -->
         <div id="step-2" class="slide">
             <div class="big-text anim-el">
-                Mi hai detto che non potevamo sentirci per messaggi...
+                Mi hai detto che non potevamo sentirci per messaggio...
             </div>
             <p class="anim-el">...ma non che <i>non avrei potuto chiederti di uscire in qualche altro modo</i>.</p>
             <p class="anim-el" style="font-weight: 500;">Quindi...</p>
@@ -433,27 +453,36 @@
             </div>
         </div>
 
-        <!-- SLIDE 6: ALTERNATIVE -->
+        <!-- SLIDE 6: ALTERNATIVE (MODIFICATA) -->
         <div id="step-6" class="slide">
             <p class="anim-el">Se l'aperitivo non dovesse essere di tuo gradimento puoi selezionare un'opzione tra:</p>
             
             <div class="btn-container anim-el">
-                <button class="selectable" onclick="toggleSelect(this)">🚬 Sigaretta non in piazzetta</button>
-                <button class="selectable" onclick="toggleSelect(this)">🤨 Cena insieme</button>
-                <button class="selectable" onclick="toggleSelect(this)">🤔 Oppure....</button>
+                <!-- Opzioni non cliccabili (Statiche) -->
+                <div class="static-option">
+                    <span>🚬 Sigaretta <span class="small-note">(non in piazzetta)</span></span>
+                </div>
                 
-                <div style="height: 15px;"></div>
+                <div class="static-option">
+                    <span>🤨 Cena insieme</span>
+                </div>
+                
+                <!-- Oppure come testo centrale -->
+                <div class="or-text">🤔 Oppure...</div>
+                
+                <!-- Pulsante Avanti -->
                 <button class="primary" onclick="nextStep(7)">Avanti</button>
             </div>
         </div>
 
-        <!-- SLIDE 7: BABBO NATALE (SILHOUETTE) -->
+        <!-- SLIDE 7: BABBO NATALE (CON FOTO LAPPONIA) -->
         <div id="step-7" class="slide">
             <h1 class="anim-el">Potremmo visitare insieme la casa di Babbo Natale</h1>
             
             <div class="santa-scene-wrapper anim-el">
-                <div class="moon"></div>
+                <!-- Lo sfondo è gestito nel CSS con lapponia.jpg -->
                 
+                <!-- Slitta Animata (Ombra) -->
                 <div id="santa-group" class="sleigh-container">
                     <span class="silhouette-part reindeer">🦌</span>
                     <span class="silhouette-part reindeer" style="margin-left: -25px; transform: translateY(5px) rotate(-10deg);">🦌</span>
@@ -475,7 +504,7 @@
             
             <!-- CONTENITORE FOTO -->
             <div class="anim-el">
-                <!-- Ricorda di salvare la foto come 'foto.jpg' nella stessa cartella -->
+                <!-- Mantenuto il nome che funzionava a te -->
                 <img src="foto.jpg.png" class="latte-img" alt="Ritratto Cappuccino">
             </div>
 
@@ -534,7 +563,7 @@
             // Avvia animazione slitta
             sleigh.classList.add('fly-active');
 
-            // Aspetta 4 secondi (quando la slitta è uscita) e mostra il testo
+            // Aspetta 4.5 secondi (quando la slitta è uscita) e mostra il testo
             setTimeout(() => {
                 jokeText.classList.add('joke-visible');
                 
@@ -544,7 +573,7 @@
                     btnContainer.style.opacity = '1';
                 }, 800);
 
-            }, 4000);
+            }, 4500);
         }
 
         // LOGICA GIOCO PACCHI
@@ -574,12 +603,6 @@
                     ], { duration: 400, fill: 'forwards' });
                 }, 300);
             }
-        }
-
-        // Selezione pulsanti
-        function toggleSelect(btn) {
-            document.querySelectorAll('.selectable').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
         }
 
         // Fine Esperienza

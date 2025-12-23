@@ -156,6 +156,20 @@
             margin-bottom: 30px !important;
         }
 
+        /* STILE IMMAGINE CAPPUCCINO */
+        .latte-img {
+            width: 200px; /* Dimensione fissa ideale per mobile */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            /* Se la foto è rettangolare, questo la rende un po' più morbida */
+            border-radius: 15px; 
+            /* Ombra per staccarla dallo sfondo */
+            filter: drop-shadow(0 10px 15px rgba(139, 69, 19, 0.15));
+            /* Piccola animazione di galleggiamento */
+            animation: floatIcon 6s infinite ease-in-out;
+        }
+
         /* --- BUTTONS --- */
         .btn-container {
             display: flex;
@@ -456,8 +470,15 @@
             </div>
         </div>
 
-        <!-- SLIDE 8: FINALE CRINGE -->
+        <!-- SLIDE 8: FINALE CRINGE CON FOTO -->
         <div id="step-8" class="slide">
+            
+            <!-- CONTENITORE FOTO -->
+            <div class="anim-el">
+                <!-- Ricorda di salvare la foto come 'foto.jpg' nella stessa cartella -->
+                <img src="foto.jpg" class="latte-img" alt="Ritratto Cappuccino">
+            </div>
+
             <p class="anim-el tiny-text">
                 (Non volevo essere così cringe ma vorrei uscire con te e Miriana non è d'accordo quindi ho dovuto inventare qualcosa)
             </p>

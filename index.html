@@ -568,16 +568,16 @@
             sleigh.classList.add('fly-active');
 
             // Aspetta 4.5 secondi (quando la slitta è uscita) e mostra il testo
-            setTimeout(() => {
-                jokeText.classList.add('joke-visible');
-                
-                // Aspetta ancora un po' per far leggere, poi mostra il pulsante
-                setTimeout(() => {
-                    btnContainer.style.visibility = 'visible';
-                    btnContainer.style.opacity = '1';
-                }, 600);
+        setTimeout(() => {
+    jokeText.classList.add('joke-visible');
 
-            }, 3000);
+    // Bottone poco dopo, quando la slitta è uscita
+    setTimeout(() => {
+        btnContainer.style.visibility = 'visible';
+        btnContainer.style.opacity = '1';
+    }, 600);
+
+}, 2200);
         }
 
         // LOGICA GIOCO PACCHI
